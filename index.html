@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deal Nexus - Technical Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575d63;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            margin-top: 30px;
+        }
+
+        .main-content h2 {
+            margin-top: 20px;
+        }
+
+        .main-content ul {
+            margin-top: 10px;
+        }
+
+        .main-content ul li {
+            margin-left: 20px;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-header h2 {
+            color: #fff;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section .content-header {
+            font-size: 24px;
+        }
+
+        .section .content {
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Deal Nexus Docs</h2>
+        </div>
+        <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
+        <a href="javascript:void(0)" onclick="showSection('architecture')">System Architecture</a>
+        <a href="javascript:void(0)" onclick="showSection('technologies')">Technologies Used</a>
+        <a href="javascript:void(0)" onclick="showSection('features')">Features & Functionality</a>
+        <a href="javascript:void(0)" onclick="showSection('models')">Database Models</a>
+        <a href="javascript:void(0)" onclick="showSection('backend')">Backend Architecture</a>
+        <a href="javascript:void(0)" onclick="showSection('frontend')">Frontend Architecture</a>
+        <a href="javascript:void(0)" onclick="showSection('security')">Security Features</a>
+        <a href="javascript:void(0)" onclick="showSection('deployment')">Deployment Process</a>
+        <a href="javascript:void(0)" onclick="showSection('performance')">Performance Optimization</a>
+        <a href="javascript:void(0)" onclick="showSection('future')">Future Enhancements</a>
+        <a href="javascript:void(0)" onclick="showSection('conclusion')">Conclusion</a>
+    </div>
+
+    <div class="main-content">
+        <div class="section active" id="introduction">
+            <div class="content-header">
+                <h2>Introduction</h2>
+            </div>
+            <div class="content">
+                <p>Deal Nexus is an online marketplace built to help users buy and sell coupons and special offers for various products and services. The platform aims to make coupon exchange seamless and efficient. This documentation will detail the technical aspects of how the platform is built using Django, its architecture, security features, and deployment process.</p>
+            </div>
+        </div>
+
+        <div class="section" id="architecture">
+            <div class="content-header">
+                <h2>System Architecture</h2>
+            </div>
+            <div class="content">
+                <p>The architecture of Deal Nexus follows the Model-Template-View (MTV) pattern. The platform is designed to be scalable and modular. The key components are:</p>
+                <ul>
+                    <li><strong>Frontend:</strong> Built with HTML, CSS, and JavaScript, along with Bootstrap for responsive design.</li>
+                    <li><strong>Backend:</strong> Django handles business logic, database interactions, and model-view-controller structure.</li>
+                    <li><strong>Database:</strong> PostgreSQL for data storage.</li>
+                    <li><strong>Authentication:</strong> Django's built-in authentication system for user management.</li>
+                    <li><strong>Admin Panel:</strong> Managed by Django's default admin interface for handling users and coupons.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="technologies">
+            <div class="content-header">
+                <h2>Technologies Used</h2>
+            </div>
+            <div class="content">
+                <p>The website uses the following technologies:</p>
+                <ul>
+                    <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, jQuery, Bootstrap</li>
+                    <li><strong>Backend:</strong> Django, Django Rest Framework (if APIs are needed), Celery for background tasks, Redis for task queueing</li>
+                    <li><strong>Database:</strong> PostgreSQL for relational data storage</li>
+                    <li><strong>Authentication:</strong> Django’s built-in authentication system</li>
+                    <li><strong>Deployment:</strong> Heroku for hosting, GitHub Actions for continuous deployment, SSL for security</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="features">
+            <div class="content-header">
+                <h2>Features & Functionality</h2>
+            </div>
+            <div class="content">
+                <p>Some key features include:</p>
+                <ul>
+                    <li><strong>User Authentication:</strong> User registration, login, and profile management.</li>
+                    <li><strong>Coupon Uploading:</strong> Sellers can upload coupons with details such as discount, description, and expiration.</li>
+                    <li><strong>Coupon Searching and Buying:</strong> Buyers can search for coupons using filters like category, expiration date, and discount.</li>
+                    <li><strong>User Profile:</strong> Users can view and edit their profile, track purchased coupons, and manage their preferences.</li>
+                    <li><strong>Admin Panel:</strong> Admin can approve/reject coupons, manage users, and track transactions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="models">
+            <div class="content-header">
+                <h2>Database Models</h2>
+            </div>
+            <div class="content">
+                <p>The database models are as follows:</p>
+                <ul>
+                    <li><strong>User Model:</strong> Extends Django's AbstractUser for handling user authentication.</li>
+                    <li><strong>Coupon Model:</strong> Contains fields like title, description, discount percentage, expiration date, etc.</li>
+                    <li><strong>Transaction Model:</strong> Tracks transactions including buyer, coupon, amount, and status.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="backend">
+            <div class="content-header">
+                <h2>Backend Architecture</h2>
+            </div>
+            <div class="content">
+                <p>The backend is powered by Django's views, models, and templates. Class-based views (CBVs) are used for managing the user interface and API requests.</p>
+            </div>
+        </div>
+
+        <div class="section" id="frontend">
+            <div class="content-header">
+                <h2>Frontend Architecture</h2>
+            </div>
+            <div class="content">
+                <p>The frontend is designed with HTML5, CSS3, and JavaScript. Bootstrap ensures the website is responsive on all devices. The pages include the homepage, coupon listing page, user profile page, and admin dashboard.</p>
+            </div>
+        </div>
+
+        <div class="section" id="security">
+            <div class="content-header">
+                <h2>Security Features</h2>
+            </div>
+            <div class="content">
+                <p>Security measures include:</p>
+                <ul>
+                    <li>Password hashing with Django's authentication system.</li>
+                    <li>Cross-Site Request Forgery (CSRF) protection using Django middleware.</li>
+                    <li>SSL encryption for all communications between users and the server.</li>
+                    <li>Role-based access control for admin and sellers.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="deployment">
+            <div class="content-header">
+                <h2>Deployment Process</h2>
+            </div>
+            <div class="content">
+                <p>The deployment process is automated using GitHub Actions for CI/CD. The application is hosted on Heroku and connects to a PostgreSQL database. Environment variables are set up on Heroku for secure configuration.</p>
+            </div>
+        </div>
+
+        <div class="section" id="performance">
+            <div class="content-header">
+                <h2>Performance Optimization</h2>
+            </div>
+            <div class="content">
+                <p>Optimizations include:</p>
+                <ul>
+                    <li>Database indexing for faster search queries.</li>
+                    <li>Image optimization for faster page loads.</li>
+                    <li>Asynchronous task processing using Celery for background tasks.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="future">
+            <div class="content-header">
+                <h2>Future Enhancements</h2>
+            </div>
+            <div class="content">
+                <ul>
+                    <li>Integrate a rating system for coupons.</li>
+                    <li>Add mobile app support using React Native.</li>
+                    <li>Implement a referral program.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="conclusion">
+            <div class="content-header">
+                <h2>Conclusion</h2>
+            </div>
+            <div class="content">
+                <p>Deal Nexus offers a solid platform for buying and selling coupons. With its use of Django and PostgreSQL, it ensures high performance, scalability, and security. Future plans include mobile app integration and new features like coupon ratings and a referral program.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
